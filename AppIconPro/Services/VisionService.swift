@@ -27,7 +27,7 @@ class VisionService {
                         return
                     }
 
-                    let maskPixelBuffer = result.pixelBuffer
+                    let maskPixelBuffer = try result.generateMaskedImage(ofInstances: result.allInstances, from: handler, croppedToInstancesExtent: false)
                     let maskCIImage = CIImage(cvPixelBuffer: maskPixelBuffer)
 
                     let originalCIImage = CIImage(cgImage: cgImage)
